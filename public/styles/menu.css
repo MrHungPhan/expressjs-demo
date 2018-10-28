@@ -1,0 +1,72 @@
+*{}
+
+nav input.form-control {
+    width: 209px;
+}
+
+form>button.btn.btn-default {
+    width: 100px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-color: #ff9d04;
+    border-radius: 0;
+    color: white;
+    /* padding: 0px 16px; */
+    background-color: #ff9d04;
+}
+
+div#bs-example-navbar-collapse-1 {
+    padding: 0;
+}
+
+form>button.btn.btn-primary {
+    background-color: #ff9d04;
+    border-radius: 0px;
+    border-color: #ff9d04;
+}
+
+.form-control {border-radius: 0px;margin-right: 7px;}
+
+.navbar-form .form-control {
+    width: 324px;
+}
+
+
+
+.navbar-default .navbar-brand {
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #ffc800;
+    text-shadow: 1px 1px 3px rgb(0, 0 , 0 , 0.5);
+    
+}
+
+.navbar-default .navbar-nav>li>a {
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 3px rgb(0, 0 ,0, 0.3);
+    text-transform: uppercase;
+}
+
+a.cart-product {
+    font-size: 22px;
+}
+
+nav.navbar.navbar-default {
+    border-radius: 0px;
+    border: none;
+    margin: 0px;
+    background: #6fbd1b;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+li.form-search {
+    line-height: 45px;
+}
+
+
+.menu-boxshadow{
+    box-shadow: -1px 3px 4px 1px rgb(0,0,0,0.3);
+}

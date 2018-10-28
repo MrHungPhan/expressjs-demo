@@ -1,0 +1,57 @@
+html
+	head
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+		link(href='https://fonts.googleapis.com/css?family=Roboto', rel='stylesheet')
+		link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all.css', integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU', crossorigin='anonymous')
+		link(rel="stylesheet", href="/styles/top-wellcome.css")
+		link(rel="stylesheet", href="/styles/menu.css")
+		link(rel="stylesheet", href="/styles/index.css")
+		link(rel="stylesheet", href="/styles/pr-title.css")
+		link(rel="stylesheet", href="/styles/product-item.css")
+		link(rel="stylesheet", href="/styles/brand.css")
+		link(rel="stylesheet", href="/styles/new-item.css")
+		link(rel="stylesheet", href="/styles/info-item.css")
+
+	body
+		header
+			.top-wellcome
+				.container
+					h5.wellcome Chào mừng bạn đến với Vựa hoa quả Phưóc Vinh
+					h5.address 0973.648.655  88 Đinh công Tráng - Tp Vinh - NA
+			nav.navbar.navbar-default
+				.container
+					// Brand and toggle get grouped for better mobile display
+					.navbar-header
+						button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+							span.sr-only Toggle navigation
+							span.icon-bar
+							span.icon-bar
+							span.icon-bar
+					// Collect the nav links, forms, and other content for toggling
+					#bs-example-navbar-collapse-1.collapse.navbar-collapse
+						ul.nav.navbar-nav
+							li
+								a(href='#') Trang chủ
+							li
+								a(href='#') Sản phẩm
+							li
+								a(href='#') Tin tức
+							li
+								a(href='#') Liên hệ
+						form.navbar-form.navbar-left
+							.form-group
+								input.form-control(type='text', placeholder='Search')
+							button.btn.btn-default(type='submit') Tìm kiếm
+						ul.nav.navbar-nav.navbar-right
+							li
+								a(href='#') Name
+							li
+								a.cart-product(href='')
+									i.fas.fa-shopping-cart
+		block content
+		script(src='http://code.jquery.com/jquery-1.9.1.min.js', integrity='sha256-wS9gmOZBqsqWxgIVgA8Y9WcQOa7PgSIX+rPA0VL2rbQ=', crossorigin='anonymous')
+		// Bootstrap JavaScript
+		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', integrity='sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS', crossorigin='anonymous')
+		// IE10 viewport hack for Surface/desktop Windows 8 bug
+		script(src='./js/1.js')
+	

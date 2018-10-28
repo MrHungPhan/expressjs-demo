@@ -1,0 +1,15 @@
+.top-wellcome .container{
+	display: flex;
+	flex-direction: row;
+	
+}
+.top-wellcome{
+	background-color: #5aa905;
+}
+
+.top-wellcome h5{
+	color: white;
+}
+.top-wellcome .wellcome{
+	flex-grow: 1;
+}

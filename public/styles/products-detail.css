@@ -1,0 +1,70 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.pr-mota p {
+    color: #555;
+}
+
+.pr-price-button a.btn.btn-primary {
+    padding: 9px 20px;
+    border-radius: 0px;
+    background: #e2a306;
+    /* line-height: 35px; */
+    border-color: #e2a306;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.pr-price-count {
+    margin-bottom: 26px;
+}
+
+input.input-count-pr {
+    height: 28px;
+    margin-left: 12px;
+    border: 1px solid;
+    border-radius: 2px;
+}
+
+.pr-price-count span {
+    /* margin-bottom: 15px; */
+    font-weight: bold;
+    /* margin-right: 12px; */
+}
+
+.pr-price-number {
+    font-size: 32px;
+    font-weight: bold;
+    color: red;
+    margin-bottom: 17px;
+}
+
+h3.pr-price-title {
+    color: #444;
+    margin-top: 0px;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.pr-mota {
+    padding: 60px 21px;
+    background: white;
+}
+
+.pr-detail {
+    background: white;
+    padding: 66px 15px;
+    margin-bottom: 21px;
+}
+
+body {
+    background: #eff0f5;
+}
+
+.main-page {
+    padding-bottom: 60px;
+    padding-top: 60px;
+}
