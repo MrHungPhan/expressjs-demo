@@ -1,0 +1,110 @@
+html
+	head
+		link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css', rel='stylesheet')
+		link(rel="stylesheet", href="/styles/admin/admin.css")
+		link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.4.2/css/all.css", integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns", crossorigin="anonymous")
+	body
+		// ---- Include the above in your HEAD tag --------
+		nav.navbar.navbar-default.navbar-static-top
+			.container-fluid
+				// Brand and toggle get grouped for better mobile display
+				.navbar-header
+					button.navbar-toggle.navbar-toggle-sidebar.collapsed.button-menu(type='button')
+						| MENU
+					button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+						span.sr-only Toggle navigation
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					a.navbar-brand(href='#')
+						| Administrator
+				// Collect the nav links, forms, and other content for toggling
+				#bs-example-navbar-collapse-1.collapse.navbar-collapse
+					form.navbar-form.navbar-left(method='GET', role='search')
+						.form-group
+							input.form-control(type='text', name='q', placeholder='Search')
+						button.btn.btn-default(type='submit')
+							i.glyphicon.glyphicon-search
+					ul.nav.navbar-nav.navbar-right
+						li
+							a(href='http://www.pingpong-labs.com', target='_blank') Visit Site
+						li.dropdown
+							a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+								| Account
+								span.caret
+							ul.dropdown-menu(role='menu')
+								li.dropdown-header SETTINGS
+								li
+									a(href='#') Other Link
+								li
+									a(href='#') Other Link
+								li
+									a(href='#') Other Link
+								li.divider
+								li
+									a(href='#') Logout
+				// /.navbar-collapse
+				// /.container-fluid
+		.container-fluid.main-container
+			.row
+				.col-md-2.sidebar
+					// uncomment code for absolute positioning tweek see top comment in css
+					
+					// Menu
+					.side-menu
+						nav.navbar.navbar-default(role='navigation')
+							// Main Menu
+							.side-menu-container
+								ul.nav.navbar-nav
+									li.active
+										a(href='#')
+											span.glyphicon.glyphicon-dashboard
+											|  Dashboard
+									li
+										a(href='#')
+											span.glyphicon.glyphicon-plane
+											|  Active Link
+									li#dropdown.panel.panel-default
+										a(data-toggle='collapse', href='#dropdown-catelogies')
+											span.glyphicon.glyphicon-user
+											|  Catelogies 
+											span.caret
+										// Dropdown level 1
+										#dropdown-catelogies.panel-collapse.collapse
+											.panel-body
+												ul.nav.navbar-nav
+													li
+														a(href='/admin/categories/list_categories') List Categories
+													li
+														a(href='/admin/categories/create_category') Create Categories
+									// Dropdown
+									li#dropdown.panel.panel-default
+										a(data-toggle='collapse', href='#dropdown-product')
+											span.glyphicon.glyphicon-user
+											|  Products 
+											span.caret
+										// Dropdown level 1
+										#dropdown-product.panel-collapse.collapse
+											.panel-body
+												ul.nav.navbar-nav
+													li
+														a(href='/admin/products/list_products') List Products
+													li
+														a(href='/admin/products/create_product') Create Product
+													
+									li
+										a(href='#')
+											span.glyphicon.glyphicon-signal
+											|  Link
+							// /.navbar-collapse
+				.col-md-10.content-page
+					block content
+		footer.pull-left.footer
+			p.col-md-12
+			hr.divider
+			|   				Copyright © 2015 
+			a(href='http://www.pingpong-labs.com') Gravitano
+			p
+		script(src='//code.jquery.com/jquery-1.11.1.min.js')
+		script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js')
+		script(src='/js/admin.js')

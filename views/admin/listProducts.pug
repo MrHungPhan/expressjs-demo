@@ -1,0 +1,57 @@
+extends ../layouts/adminLayout
+
+block content
+	.panel.panel-default.panel-table
+		.panel-heading
+			.row
+				.col.col-xs-6
+					h3.panel-title Products List
+				.col.col-xs-6.text-right
+					button.btn.btn-sm.btn-primary.btn-create(type='button') Create New
+		.panel-body
+			table.table.table-striped.table-bordered.table-list
+				thead
+					tr
+						th
+							em.fa.fa-cog
+						th Category ID
+						th Name
+						th Description
+						th Price
+						th Avatar
+				tbody
+					each product in productsList
+						tr
+							td(align='center')
+								a.btn.btn-default
+									em.fas.fa-pencil-alt
+								a.btn.btn-danger
+									em.fa.fa-trash
+							td= product.category_id
+							td= product.name
+							td= product.description
+							td= product.price
+							td
+								img.avatar(src =product.avatar)
+		.panel-footer
+			.row
+				.col.col-xs-4
+					| Page 1 of 5
+				.col.col-xs-8
+					ul.pagination.hidden-xs.pull-right
+						li
+							a(href='#') 1
+						li
+							a(href='#') 2
+						li
+							a(href='#') 3
+						li
+							a(href='#') 4
+						li
+							a(href='#') 5
+					ul.pagination.visible-xs.pull-right
+						li
+							a(href='#') «
+						li
+							a(href='#') »
+

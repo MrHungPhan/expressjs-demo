@@ -1,0 +1,24 @@
+extends ../layouts/adminLayout
+
+block content
+	form(action='', method='POST', role='form', enctype="multipart/form-data")
+		.form-group
+			label(for='') Product Catelogies
+			select.form-control(name = 'category_id')
+				option(value='0', selected='') All Snippets
+				each cate in categories
+					option(value= cate._id.toString())= cate.name
+		.form-group
+			label(for='') Product Name
+			input.form-control(type='text', id='',name = 'name', placeholder='Input field')
+		.form-group
+			label(for='') Description
+			input.form-control(type='text', id='',name = 'description' ,placeholder='Input field')
+		.form-group
+			label(for='') Price
+			input.form-control(type='number', id='', name = 'price',placeholder='Input field')
+		.form-group
+			label(for='') Imgage
+			input.form-control-file(type='file', id='',name = 'avatar' placeholder='Input field')
+		
+		button.btn.btn-primary(type='submit') Create
