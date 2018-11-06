@@ -12,11 +12,14 @@ var port = 3030;
 
 
 //boss router
-var productRoute = require('./routes/products.route');
+var indexRoute = require('./routes/index.route');
+var productDetailtRoute = require('./routes/product.route');
+
 //admin router
 var adminRoute = require('./admin/routes/admin.route');
 var productRoute = require('./admin/routes/product.route');
 var categoryRoute = require('./admin/routes/category.route');
+
 
 
 //set pug
@@ -30,15 +33,15 @@ app.use(bodyParser.urlencoded({ extended: true })); //
 //static file  add css, font, js
 app.use('/admin/categories', express.static('public'));
 app.use('/admin/products', express.static('public'));
+app.use('/products', express.static('public'));
 app.use(express.static('public'));
 
 
+//index
+app.use('/', indexRoute);
+app.use('/products', productDetailtRoute);
 
-app.get('/', function(req, res){
-	res.render('index');
-});
-
-app.use('/products', productRoute);
+// admin router
 app.use('/admin', adminRoute);
 app.use('/admin/products', productRoute);
 app.use('/admin/categories', categoryRoute);

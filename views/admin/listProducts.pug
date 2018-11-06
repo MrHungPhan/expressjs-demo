@@ -14,19 +14,22 @@ block content
 					tr
 						th
 							em.fa.fa-cog
+						th Order
 						th Category ID
 						th Name
 						th Description
 						th Price
 						th Avatar
 				tbody
-					each product in productsList
+					- var i = 0;
+					each product, index in productsList
 						tr
 							td(align='center')
-								a.btn.btn-default
+								a.btn.btn-default.btn-edit(href = "/admin/products/edit_product/"+ product._id.toString())
 									em.fas.fa-pencil-alt
-								a.btn.btn-danger
+								a.btn.btn-danger.btn-delete(href = "/admin/products/delete_product/"+ product._id.toString())
 									em.fa.fa-trash
+							td= index + 1 + (perPage * (page - 1))
 							td= product.category_id
 							td= product.name
 							td= product.description
@@ -36,22 +39,29 @@ block content
 		.panel-footer
 			.row
 				.col.col-xs-4
-					| Page 1 of 5
+					| Page #{page} of #{lastPage }
 				.col.col-xs-8
 					ul.pagination.hidden-xs.pull-right
-						li
-							a(href='#') 1
-						li
-							a(href='#') 2
-						li
-							a(href='#') 3
-						li
-							a(href='#') 4
-						li
-							a(href='#') 5
-					ul.pagination.visible-xs.pull-right
-						li
-							a(href='#') «
-						li
-							a(href='#') »
+						- var pagePrev = page - 1;
+						- var pageNext = page + 1;
+						each item in pageNumber
+							if (item === 'First')
+								li
+									a(href='/admin/products/list_products?page=1')= item
+							else if (item === 'Next')
+								li
+									a(href='/admin/products/list_products?page='+ pageNext)= item
+							else if (item === 'Prev')
+								li
+									a(href='/admin/products/list_products?page=' + pagePrev)= item
+							else if (item === 'Last')
+								li
+									a(href='/admin/products/list_products?page=' + lastPage)= item
+							else if (item != 'First' && item != 'Next' && item != 'Prev' && item != 'Last')	
+								if (item == page)
+									li.active
+										a(href='/admin/products/list_products?page=' + item)= item
+								else
+									li
+										a(href='/admin/products/list_products?page=' + item)= item
 

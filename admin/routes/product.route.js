@@ -15,4 +15,10 @@ router.post('/create_product',upload.single('avatar') ,controller.postCreateProd
 
 router.get('/list_products', controller.getListProducts);
 
+router.get('/delete_product/:productId', controller.deleteProduct);
+
+router.get('/edit_product/:productId', controller.getEditProduct);
+
+router.post('/edit_product/:productId', controller.editProduct);
+
 module.exports = router;

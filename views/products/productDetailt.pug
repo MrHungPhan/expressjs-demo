@@ -1,0 +1,48 @@
+extends ../layouts/common
+
+block content
+	.main-page
+		.container
+			.pr_detailt
+				.pr-avatar
+					img(src= productDetailt.avatar, alt='')
+				.pr-info
+					.pr-name= productDetailt.name
+					.pr-price
+						| Gía : 
+						span.price-product= productDetailt.price + 'đ'
+					span Số lượng 
+					.quantity-input
+						form(action='#')
+							button.btn.btn-default.btn-prev(type="button") -
+							input(type='number', name='quantity', value='1', min = "1", max = "10")
+							button.btn.btn-default.btn-next(type="button") +
+							.activity-product
+								button.btn.btn-default(type="submit") Thêm vào giỏ hàng
+								a.btn.btn-default(href='', type="submit") Mua ngay
+					.category
+						| Categories : Hoa qua mine nam
+					.share-product
+						| Share : 
+						a(href='')
+							i.fab.fa-facebook-square
+						a(href='')
+							i.fab.fa-youtube
+						a(href='')
+							i.fab.fa-twitter-square
+			ul.support-des
+				li
+					a.btn.btn-default(href='') Mô tả
+				li
+					a.btn.btn-default(href='') Đánh gía
+				li
+					a.btn.btn-default(href='') Hỏi đáp
+			ul.pr-description
+				li
+					p= productDetailt.description
+				li
+					p
+						| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab vel est atque, fugit suscipit accusantium perferendis reprehenderit vitae reiciendis facilis quasi, consequuntur! Quos odit dicta incidunt reiciendis placeat iusto nemo.
+				li
+					p
+						| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis accusamus rem aliquam quidem. Dolorum debitis nam iusto libero minus repellat, esse omnis itaque placeat alias eaque quas facilis, quod, veniam.
