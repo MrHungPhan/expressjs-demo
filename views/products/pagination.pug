@@ -1,0 +1,23 @@
+.filter-products
+	.col-md-12
+		.products-title
+			if (cateFilter)
+				h4= cateFilter.name
+			else
+				h4 Sản phẩm
+			.sort-product
+				.dropdown-sort sap xep
+#products(data-page= pageNumberFilter)
+	if (products.length != 0)
+		each pro in products
+			.col-sm-6.col-md-4.product
+				.product-item(data-idpr= pro._id.toString())
+					.product-img
+						img.img-responsive(src=pro.avatar[0], alt='Image')
+						.product-overlay
+							a.btn.btn-danger(href='/products/' + pro._id.toString() , type='button') Đặt mua
+					.product-content
+						p.name= pro.name
+						p.price #{pro.priceFormat}/ #{pro.unit}
+	else
+		h4(style ="text-align : center; font-size : 1.2em; font-weight : bold") Sản phẩm tìm kiếm hiện tại không có

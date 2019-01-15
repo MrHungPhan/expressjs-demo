@@ -2,6 +2,7 @@ html
 	head
 		link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css', rel='stylesheet')
 		link(rel="stylesheet", href="/styles/admin/admin.css")
+		link(href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet")
 		link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.4.2/css/all.css", integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns", crossorigin="anonymous")
 	body
 		// ---- Include the above in your HEAD tag --------
@@ -27,10 +28,9 @@ html
 							i.glyphicon.glyphicon-search
 					ul.nav.navbar-nav.navbar-right
 						li
-							a(href='http://www.pingpong-labs.com', target='_blank') Visit Site
+							a(href='/home', target='_blank') Visit Site
 						li.dropdown
-							a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
-								| Account
+							a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')= user.username
 								span.caret
 							ul.dropdown-menu(role='menu')
 								li.dropdown-header SETTINGS
@@ -42,7 +42,7 @@ html
 									a(href='#') Other Link
 								li.divider
 								li
-									a(href='#') Logout
+									a(href='/admin/logout') Logout
 				// /.navbar-collapse
 				// /.container-fluid
 		.container-fluid.main-container
@@ -60,42 +60,60 @@ html
 										a(href='#')
 											span.glyphicon.glyphicon-dashboard
 											|  Dashboard
-									li
-										a(href='#')
-											span.glyphicon.glyphicon-plane
-											|  Active Link
+									li#dropdown.panel.panel-default
+										a(data-toggle='collapse', href='#dropdown-users')
+											span.glyphicon.glyphicon-user
+											|  User 
+											span.caret
+										// Dropdown level 1
+										#dropdown-users.panel-collapse.collapse
+											.panel-body
+												ul.nav.navbar-nav
+													li
+														a(href='/admin/users/list_users') List Users
+													li
+														a(href='/admin/users/create_user') Create User
+									// Dropdown
 									li#dropdown.panel.panel-default
 										a(data-toggle='collapse', href='#dropdown-catelogies')
-											span.glyphicon.glyphicon-user
-											|  Catelogies 
+											span.glyphicon.glyphicon-list-alt
+											|  Loại Sản Phẩm 
 											span.caret
 										// Dropdown level 1
 										#dropdown-catelogies.panel-collapse.collapse
 											.panel-body
 												ul.nav.navbar-nav
 													li
-														a(href='/admin/categories/list_categories') List Categories
+														a(href='/admin/categories/list_categories') Danh Sách
 													li
-														a(href='/admin/categories/create_category') Create Categories
+														a(href='/admin/categories/create_category') Thêm Mới
 									// Dropdown
 									li#dropdown.panel.panel-default
 										a(data-toggle='collapse', href='#dropdown-product')
-											span.glyphicon.glyphicon-user
-											|  Products 
+											span.glyphicon.glyphicon-th-large
+											|  Sản Phẩm 
 											span.caret
 										// Dropdown level 1
 										#dropdown-product.panel-collapse.collapse
 											.panel-body
 												ul.nav.navbar-nav
 													li
-														a(href='/admin/products/list_products') List Products
+														a(href='/admin/products/list_products') Danh Sách
 													li
-														a(href='/admin/products/create_product') Create Product
-													
-									li
-										a(href='#')
+														a(href='/admin/products/create_product') Thêm Mới
+									// Dropdown
+									li#dropdown.panel.panel-default
+										a(data-toggle='collapse', href='#dropdown-new')
 											span.glyphicon.glyphicon-signal
-											|  Link
+											|  Tin tức
+											span.caret
+										#dropdown-new.panel-collapse.collapse
+											.panel-body
+												ul.nav.navbar-nav
+													li
+														a(href='/admin/news/list_news') Danh Sách
+													li
+														a(href='/admin/news/create_new') Thêm Mới
 							// /.navbar-collapse
 				.col-md-10.content-page
 					block content
@@ -105,6 +123,7 @@ html
 			|   				Copyright © 2015 
 			a(href='http://www.pingpong-labs.com') Gravitano
 			p
-		script(src='//code.jquery.com/jquery-1.11.1.min.js')
+		script(src='http://code.jquery.com/jquery-1.9.1.min.js', integrity='sha256-wS9gmOZBqsqWxgIVgA8Y9WcQOa7PgSIX+rPA0VL2rbQ=', crossorigin='anonymous')
+				script(src="https://unpkg.com/axios/dist/axios.min.js")
 		script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js')
 		script(src='/js/admin.js')

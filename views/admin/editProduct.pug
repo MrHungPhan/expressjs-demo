@@ -3,22 +3,22 @@ extends ../layouts/adminLayout
 block content
 	form(action='', method='POST', role='form', enctype="multipart/form-data")
 		.form-group
-			label(for='') Product Catelogies
+			label(for='') Loại Sản Phẩm
 			select.form-control(name = 'category_id')
 				option(value='0', selected='') All Snippets
 				each cate in categoriesEdit
 					option(value= cate._id.toString())= cate.name
 		.form-group
-			label(for='') Product Name
+			label(for='') Tên Sản Phẩm
 			input.form-control(type='text', id='',name = 'name', placeholder='Input field', value = productEdit.name)
 		.form-group
-			label(for='') Description
+			label(for='') Mô Tả
 			input.form-control(type='text', id='',name = 'description' ,placeholder='Input field', value = productEdit.description)
 		.form-group
-			label(for='') Price
+			label(for='') Gía
 			input.form-control(type='number', id='', name = 'price',placeholder='Input field', value = productEdit.Price)
 		.form-group
-			label(for='') Imgage
-			input.form-control-file(type='file', id='',name = 'avatar' placeholder='Input field')
+			label(for='') Ảnh
+			input.form-control-file(type='file', id='',name = 'avatar' placeholder='Input field' multiple)
 		
-		button.btn.btn-primary(type='submit') Save
+		button.btn.btn-primary(type='submit') Sủa

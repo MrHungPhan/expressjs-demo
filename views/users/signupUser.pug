@@ -1,0 +1,46 @@
+extends ../layouts/common
+
+block content
+	.wrap-content
+		.signup-form
+			.sign-title
+				h3
+					| Tạo tài khoản
+			.sign-content
+				form.frm-signup(action='', method = 'POST')
+					.group-first
+						.form-group
+							label(for='phone') Số điện thoại *
+							input#phone.form-control(type='text', value = body? body.phone:'',  name='phone')
+							if errors
+								for err in errors
+									if err == 'phone'
+										.alert-err= 'Số điện thoại yêu cầu bắt buộc'
+						.form-group
+							label(for='email') Email *
+							input#email.form-control(type='email',value = body? body.email:'', name='email')
+							if errors
+								for err in errors
+									if err == 'email'
+										.alert-err= 'Email yêu cầu bắt buộc'	
+									else if err == 'email-exist'
+										.alert-err= 'Email đã tồn tại'
+					.group-last
+						.form-group
+							label(for='name') Tên *
+							input#name.form-control(type='text',value = body?body.name : '', name='name')
+							if errors
+								for err in errors
+									if err == 'name'
+										.alert-err= 'Tên yêu câu bắt buộc'
+						.form-group
+							label(for='pwd') Mật khẩu *
+							input#pwd.form-control(type='password',value = body ? body.password: '', name='password')
+							if errors
+								for err in errors
+									if err == 'pass'
+										.alert-err= 'Mật khẩu yêu cầu bắt buộc'
+						.form-group
+							label(for='passreturn') Nhập lại mật khẩu *
+							input#passreturn.form-control(type='password')
+						button.btn.btn-primary.btn-signup(type='submit') Đăng kí

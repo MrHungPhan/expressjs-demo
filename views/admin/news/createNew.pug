@@ -1,0 +1,20 @@
+extends ../../layouts/adminLayout
+
+block content
+	form(action='', method='POST', role='form', enctype="multipart/form-data")
+		.form-group
+			label(for='') Tiêu Đề
+			input.form-control(type='text', id='',name = 'title', placeholder='Input field')
+		.form-group
+			label(for='') Nội dung
+			textarea.form-control(type='text', id='',name = 'content' ,placeholder='Input field')
+		.form-group
+			label(for='') Tóm Tắt ND
+			textarea.form-control(id='', name = 'title_content',placeholder='Input field')
+		.form-group
+			label(for='') Ảnh Minh Họa
+			input.form-control-file(type='file', id='',name = 'avatar_around', placeholder='Input field' multiple)
+		.form-group
+			label(for='') Tác Gỉa
+			input.form-control( id='', name = 'author',placeholder='Input field')
+		button.btn.btn-primary(type='submit') Thêm Mới

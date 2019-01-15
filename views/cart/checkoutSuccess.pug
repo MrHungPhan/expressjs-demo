@@ -1,0 +1,92 @@
+doctype html
+html(lang='')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		// Bootstrap CSS
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7', crossorigin='anonymous')
+		link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.6.3/css/all.css', integrity='sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/', crossorigin='anonymous')
+		link(rel="stylesheet", href="/styles/cart/order.css")
+		link(rel="stylesheet", href="/styles/cart/success.css")
+		link(rel="stylesheet", href="/styles/index.css")
+		link(rel="stylesheet", href="/styles/info-item.css")
+	body
+		nav.navbar.navbar-default(role='navigation')
+			.container
+				// Brand and toggle get grouped for better mobile display
+				.navbar-header
+					a(href="/home")
+						img(src='img/logo.png', alt='')
+		.main
+			.container
+				.sucess.header
+					.check-icon
+						i.fas.fa-check
+				.success-box
+					.sucess-content
+						.s-title Chào 
+							span #{user.name}
+						.s-wellcome Chúc mừng bạn đã đặt hàng thành công
+						.s-content
+							.s-code Mã đơn hàng :
+								span.bold #{order.order_code}
+							.s-pay Phương thức thanh toán : 
+								span.bold #{pay.name}
+							.s-total Tổng thanh toán : 
+								span.red #{total}
+							.s-satus Tình trang : 
+								span.red Chưa thanh toán
+					.success-footer
+						.s-email Mọi thông tin đơn hàng sẽ đưọc gửi đến email của bạn, vui lòng kiểm tra email để biết thêm chi tiết
+						.s-button
+							a.btn.btn-default.btn-s(href ="/home") Tiếp tục mua sắm
+							a.btn.btn-default.btn-o(href = "") Chi tiết đơn hàng		
+		footer.footer-about
+			.container
+				.row
+					.col-md-4
+						.us-about
+							.us-title
+								p Về chúng tôi 
+								hr.title-ngang
+							.about-content
+								| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde quam obcaecati, dolorum inventore sunt est, atque iure aspernatur totam ea natus libero distinctio, fugit aperiam error tempore, ducimus incidunt laborum.
+					.col-md-4
+						.us-about
+							.us-title
+								p Hỗ trợ 
+								hr.title-ngang
+							.about-content
+								ul
+									li
+										a(href='')
+											i.fas.fa-angle-double-right
+											| Tư vấn
+									li
+										a(href='')
+											i.fas.fa-angle-double-right
+											| Khuyến mãi
+									li
+										a(href='')
+											i.fas.fa-angle-double-right
+											| Về chúng tôi
+									li
+										a(href='')
+											i.fas.fa-angle-double-right
+											| Thanh toán
+					.col-md-4
+						.us-about
+							iframe(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3779.908487981681!2d105.67654901442823!3d18.66810206951883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3139ce7b7cb7346d%3A0x259b035e16b8e9a!2zODggxJBpbmggQ8O0bmcgVHLDoW5nLCBMw6ogTWFvLCBUaMOgbmggcGjhu5EgVmluaCwgTmdo4buHIEFuIDQyOTk5LCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1538642076216', width='100%', height='100%', frameborder='0', style='border:0', allowfullscreen='')
+		.copy-right
+			.container
+				.copy-content
+					p
+						| 2015 Bản quyền thuộc về 
+						span Trái cây
+				.design-about.pull-right
+					p Thiết kế và phát triển bởi Go Go
+		// jQuery
+		script(src='//code.jquery.com/jquery.js')
+		script(src='https://code.jquery.com/jquery-1.9.1.min.js', integrity='sha256-wS9gmOZBqsqWxgIVgA8Y9WcQOa7PgSIX+rPA0VL2rbQ=', crossorigin='anonymous')
+		script(src="https://unpkg.com/axios/dist/axios.min.js")

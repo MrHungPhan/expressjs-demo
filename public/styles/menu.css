@@ -1,10 +1,48 @@
 *{}
 
+.live-search li {
+    border-bottom: 1px solid #eee;
+    padding: 0.7em;
+}
+
+ul.live-search {
+    /* visibility: hidden; */
+    display: none;
+    background: #fff;
+    position: absolute;
+    list-style: none;
+    width: calc(100% - 7px);
+}
+
+.navbar-left .form-group {
+    position: relative;
+}
+
+.form-group {}
+
+.countCart {
+    /* padding: 1rem; */
+    text-align: center;
+    width: 2.2rem;
+    position: absolute;
+    right: 1px;
+    border-radius: 50%;
+    background-color: #286090;
+    height: 2.2rem;
+    top: 0.5rem;
+    z-index: 9;
+    border: none;
+    line-height:;
+}
+
+.countCart {}
+
 nav input.form-control {
     width: 209px;
 }
 
 form>button.btn.btn-default {
+    font-weight: 600;
     width: 100px;
     padding-left: 15px;
     padding-right: 15px;

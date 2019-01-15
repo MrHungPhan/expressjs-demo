@@ -49,5 +49,12 @@
 }
 
 i.fas.fa-angle-double-right{
-	margin-left: 10px;
+	color: #333;
+	/* margin-left: 10px; */
+	font-weight: 900;
+}
+
+.pr-right i.fas.fa-angle-double-right {
+    margin-left: .5em;
+    color: #6fbd1b;
 }

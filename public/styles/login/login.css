@@ -1,0 +1,44 @@
+*{
+	margin:0;
+	padding: 0;
+	text-decoration: none;
+}
+
+.login-content {
+    margin-bottom: 5rem;
+    padding: 3rem;
+    border: 1px solid rgb(0,0,0,0.2);
+}
+
+.login-title h3 {
+    margin-bottom: 3rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.login-form {
+    width: 42%;
+    margin: auto;
+}
+
+.forgot {
+    margin-bottom: 1rem;
+}
+
+button.btn.btn-primary.login-btn {
+    border-color: tomato;
+    background-color: tomato;
+    width: 100%;
+    margin-top: 2.5rem;
+    height: 4rem;
+}
+
+form.frm-login {
+    /* width: 58%; */
+}
+
+.alert.alert-error {
+    background-color: #f2dede;
+    color: #a94442;
+    border-color: #ebccd1;
+}

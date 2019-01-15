@@ -1,7 +1,9 @@
 var Category = require('../../models/category.model');
 
 module.exports.getCreateCategory = function(req, res, next){
-	res.render('admin/createCategory.pug');
+	res.render('admin/createCategory.pug',{
+			user : res.locals.account
+		});
 };
 
 module.exports.postCreateCategory = function(req, res, next){
@@ -14,6 +16,7 @@ module.exports.getListCategories = async function(req, res, next){
 
 	var categoriesList = await Category.find();
 	res.render('admin/listCategories',{
-		categoriesList : categoriesList
+		categoriesList : categoriesList,
+		user : res.locals.account
 	});
 }

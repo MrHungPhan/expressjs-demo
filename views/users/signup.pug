@@ -1,0 +1,48 @@
+extends ../layouts/common
+
+block content
+	.wrap-content
+		.signup-form
+			.sign-title
+				h3
+					| Tạo tài khoản
+			.sign-content
+				form.frm-signup(action='', method = 'POST')
+					.group-first
+						.form-group
+							label(for='phone') Số điện thoại *
+							input#phone.form-control(type='text', value = body? body.phone:'',  name='phone')
+							if errors
+								each error, i in errors
+									if (error.param == 'phone')
+										div(class ="err-message") #{error.msg}
+						.form-group
+							label(for='email') Email *
+							input#email.form-control(type='text',value = body? body.email:'', name='email')
+							if errors
+								each error, i in errors
+									if (error.param == 'email')
+										div(class ="err-message") #{error.msg}
+					.group-last
+						.form-group
+							label(for='name') Tên *
+							input#name.form-control(type='text',value = body?body.name : '', name='name')
+							if errors
+								each error, i in errors
+									if (error.param == 'name')
+										div(class ="err-message") #{error.msg}
+						.form-group
+							label(for='pwd') Mật khẩu *
+							input#pwd.form-control(type='password',value = body ? body.password: '', name='password')
+							if errors
+								each error, i in errors
+									if (error.param == 'password')
+										div(class ="err-message") #{error.msg}
+						.form-group
+							label(for='passreturn') Nhập lại mật khẩu *
+							input#passreturn.form-control(type='password', name = 'password2')
+							if errors
+								each error, i in errors
+									if (error.param == 'password2')
+										div(class ="err-message") #{error.msg}
+						button.btn.btn-primary.btn-signup(type='submit') Đăng kí

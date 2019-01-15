@@ -7,7 +7,8 @@ var productSchema = new Schema({
 	name : String,
 	description: String,
 	price: Number,
-	avatar : String,
+	unit : String,
+	avatar : [String],
 });
 
 //create model

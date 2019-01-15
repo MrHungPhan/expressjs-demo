@@ -1,0 +1,18 @@
+extends ../../layouts/adminLayout
+
+block content
+	form(action='', method='POST', role='form', enctype="multipart/form-data")
+		.form-group
+			label(for='') UserName
+			input.form-control(type='text', id='',name = 'name', placeholder='Input field')
+		.form-group
+			label(for='') Email
+			input.form-control(type='text', id='',name = 'email' ,placeholder='Input field')
+		.form-group
+			label(for='') Password
+			input.form-control(type='password', id='', name = 'password',placeholder='Input field')
+		.form-group
+			label(for='') Avatar
+			input.form-control-file(type='file', id='',name = 'avatar', placeholder='Input field' multiple)
+		
+		button.btn.btn-primary(type='submit') Create

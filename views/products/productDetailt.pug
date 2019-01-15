@@ -5,23 +5,25 @@ block content
 		.container
 			.pr_detailt
 				.pr-avatar
-					img(src= productDetailt.avatar, alt='')
+					each avatar in productDetailt.avatar
+						img(src= avatar, alt='')
 				.pr-info
 					.pr-name= productDetailt.name
 					.pr-price
 						| Gía : 
-						span.price-product= productDetailt.price + 'đ'
+						span.price-product #{productDetailt.priceFormat} / #{productDetailt.unit}
 					span Số lượng 
-					.quantity-input
-						form(action='#')
+					.quantity-input#btn-addCart
+						form#addCart(action='/cart/add/'+ productDetailt._id.toString(), method = "POST")
 							button.btn.btn-default.btn-prev(type="button") -
-							input(type='number', name='quantity', value='1', min = "1", max = "10")
+							input(type='number', step= "0.1" name='quantity', value='1', min = "0.1", max = "10")
 							button.btn.btn-default.btn-next(type="button") +
-							.activity-product
+							span.unit= productDetailt.unit
+							.button-cart
 								button.btn.btn-default(type="submit") Thêm vào giỏ hàng
 								a.btn.btn-default(href='', type="submit") Mua ngay
 					.category
-						| Categories : Hoa qua mine nam
+						| Categories : #{categoryProduct.name}
 					.share-product
 						| Share : 
 						a(href='')
@@ -31,14 +33,14 @@ block content
 						a(href='')
 							i.fab.fa-twitter-square
 			ul.support-des
+				li(class = "active")
+					a.btn.btn-default( type="button") Mô tả
 				li
-					a.btn.btn-default(href='') Mô tả
+					a.btn.btn-default(type="button") Đánh gía
 				li
-					a.btn.btn-default(href='') Đánh gía
-				li
-					a.btn.btn-default(href='') Hỏi đáp
+					a.btn.btn-default(type="button") Hỏi đáp
 			ul.pr-description
-				li
+				li(class = "append-class")
 					p= productDetailt.description
 				li
 					p
@@ -46,3 +48,5 @@ block content
 				li
 					p
 						| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis accusamus rem aliquam quidem. Dolorum debitis nam iusto libero minus repellat, esse omnis itaque placeat alias eaque quas facilis, quod, veniam.
+			.product-around
+				

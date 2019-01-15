@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Jade</title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+	<style>
+		.order-box {
+			border: 1px solid red;
+			padding: 1rem;
+			color : #646464;
+		};
+
+	</style>
+	<h2 style = "text-transform: uppercase; color: red">Thông báo đặt hàng thành công</h2>
+	<div class="col" id="container" style="padding-right: 1rem; padding-left: 1rem; margin : auto">
+		<h4 style = "color : #646464">Chào {{ user.name }}</h4>
+		<div class="thank">Cảm ơn bạn đã mua sắm tại website chúng tôi</div>
+		<div class="order-box" style="border: 1px solid red; padding: 1rem">
+			<div class="order-title">Đơn hàng của bạn <span style="color: red">{{ order.order_code }}</span></div>
+			<div class="order-content">
+				<div class="name">Sản phẩm : {{ products }} </div>
+				<div class="total">Tổng thanh toán : {{ order.total}}</div>
+				<div class="buyer">Ngưòi nhận : {{ order.buyer_name }} - {{ order.buyer_phone}} - {{ order.buyer_add }}</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,26 +1,117 @@
 extends ../layouts/common
 
 block content
-	main
-		.banner(style='background-image: url(./img/banner.png);')
+	main.mt-3
 		.container
-			.pr-title
-				.pr-left
-					a(href='') Trái cây đặc biệt
-				.pr-right
-					a(href='')
-						| Xem thêm
-						i.fas.fa-angle-double-right
-		.products
-			.container
+			.path-index
 				.row
-					.col-sm-6.col-md-3.product
-						.product-item
-							.product-img
-								img.img-responsive(src='./img/1.png', alt='Image')
-								.product-overlay
-									a.btn.btn-danger(href='/products-detail.html', type='button') Đặt mua
-							.product-content
-								p Thăng long ruột đỏ
-	
-	
+					.col-md-12
+						p
+							a(href="/home") Trang chủ
+							span 
+								i(class="fas fa-angle-double-right")
+							span sản phẩm
+			.filter-content
+				.row
+					.col-md-3
+						.filter-bar
+							.filter-title
+								h4 Lọc sản phẩm
+							.filter.filter-search
+								h5 Theo tên
+								form#filter-search
+									.form-group
+										input(type = "text", name = "filter-search")
+										span
+											a.btn.btn-default
+												i.fa.fa-search
+							.filter.filter-categories
+								h5 Theo danh mục
+								ul.group-filter-cate
+									each cate in categories
+										li.filter-cate-item
+											if (cate._id.toString() === cateQueryId)
+												input(type ="radio", id= cate._id.toString(), value= cate._id.toString(), name = "filter-cate", checked = "checked")
+												label(for= cate._id.toString())
+													i.far.fa-square
+													i.fas.fa-check-square
+													| #{cate.name}
+											else
+												input(type ="radio", id= cate._id.toString(), value= cate._id.toString(), name = "filter-cate")
+												label(for= cate._id.toString())
+													i.far.fa-square
+													i.fas.fa-check-square
+													| #{cate.name}
+							.filter.filter-price
+								h5 Theo Gía
+								ul.group-filter-price
+									li.filter-price-item
+										if (priceQueryMinPrice === "0" && priceQueryMaxPrice === "25000")
+											input#25000(type ="radio", name = "filter-price" , value = "0AND25000", checked = "checked")
+										else
+											input#25000(type ="radio", name = "filter-price" , value = "0AND25000")
+										label(for = "25000")
+											i.far.fa-square
+											i.fas.fa-check-square
+											| Dưói 25,000đ/kg
+									li.filter-price-item
+										if (priceQueryMinPrice === "25000" && priceQueryMaxPrice === "75000")
+											input#25000AND75000(type ="radio", name = "filter-price", value ="25000AND75000", checked = "checked")
+										else
+											input#25000AND75000(type ="radio", name = "filter-price", value ="25000AND75000")
+										label(for = "25000AND75000")
+											i.far.fa-square
+											i.fas.fa-check-square
+											| 25,000đ/kg - 75,000đ/kg
+									li.filter-price-item
+										if (priceQueryMinPrice === "75000" && priceQueryMaxPrice === "150000")
+											input#75000AND150000(type ="radio", name = "filter-price",value = "75000AND150000", checked = "checked")
+										else
+											input#75000AND150000(type ="radio", name = "filter-price",value = "75000AND150000")
+										label(for = "75000AND150000")
+											i.far.fa-square
+											i.fas.fa-check-square
+											| 75,000đ/kg - 150,000đ/kg
+									li.filter-price-item
+										if (priceQueryMinPrice === "150000" && priceQueryMaxPrice === "250000")
+											input#150000AND250000(type ="radio", name = "filter-price", value = "150000AND250000", checked ="checked")
+										else
+											input#150000AND250000(type ="radio", name = "filter-price", value = "150000AND250000")
+										label(for = "150000AND250000")
+											i.far.fa-square
+											i.fas.fa-check-square
+											| 150,000đ/kg - 250,000đ/kg
+									li.filter-price-item
+										if (priceQueryMinPrice === "250000")
+											input#250000(type ="radio", name = "filter-price",,value="250000", checked ="checked")
+										else
+											input#250000(type ="radio", name = "filter-price",,value="250000")
+										label(for = "250000")
+											i.far.fa-square
+											i.fas.fa-check-square
+											| Trên 250,000đ/kg
+					.col-md-9#filter-products
+						include pagination.pug
+					ul.pagination.hidden-xs.pull-right
+						- var pagePrev = page - 1;
+						- var pageNext = page + 1;
+						each item in pageNumber
+							if (item === 'First')
+								li
+									a#paginationItem= item
+							else if (item === 'Next')
+								li
+									a#paginationItem= item
+							else if (item === 'Prev')
+								li
+									a#paginationItem= item
+							else if (item === 'Last')
+								li
+									a#paginationItem= item
+							else if (item != 'First' && item != 'Next' && item != 'Prev' && item != 'Last')	
+								if (item == page)
+									li.active
+										a#paginationItem= item
+								else
+									li
+										a#paginationItem= item

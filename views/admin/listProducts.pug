@@ -5,20 +5,20 @@ block content
 		.panel-heading
 			.row
 				.col.col-xs-6
-					h3.panel-title Products List
+					h3.panel-title Danh Sách Sản Phẩm
 				.col.col-xs-6.text-right
-					button.btn.btn-sm.btn-primary.btn-create(type='button') Create New
+					button.btn.btn-sm.btn-primary.btn-create(type='button') Thêm Mới
 		.panel-body
 			table.table.table-striped.table-bordered.table-list
 				thead
 					tr
 						th
 							em.fa.fa-cog
-						th Order
-						th Category ID
-						th Name
-						th Description
-						th Price
+						th STT
+						th ID Loại Sản Phẩm
+						th Sản Phẩm
+						th Mô tả
+						th Gía
 						th Avatar
 				tbody
 					- var i = 0;
@@ -35,7 +35,8 @@ block content
 							td= product.description
 							td= product.price
 							td
-								img.avatar(src =product.avatar)
+								each item in product.avatar
+									img.avatar(src = item, style = "margin-right : 5px;")
 		.panel-footer
 			.row
 				.col.col-xs-4

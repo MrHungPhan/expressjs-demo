@@ -1,7 +1,7 @@
 html
 	head
 		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
-		link(href='https://fonts.googleapis.com/css?family=Roboto', rel='stylesheet')
+		link(href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet")
 		link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all.css', integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU', crossorigin='anonymous')
 		link(rel="stylesheet", href="/styles/top-wellcome.css")
 		link(rel="stylesheet", href="/styles/menu.css")
@@ -12,7 +12,9 @@ html
 		link(rel="stylesheet", href="/styles/brand.css")
 		link(rel="stylesheet", href="/styles/new-item.css")
 		link(rel="stylesheet", href="/styles/info-item.css")
-
+		link(rel="stylesheet", href="/styles/login/signup.css")
+		link(rel="stylesheet", href="/styles/login/login.css")
+		link(rel="stylesheet", href="/styles/cart/cart.css")
 	body
 		header
 			.top-wellcome
@@ -33,27 +35,150 @@ html
 						ul.nav.navbar-nav
 							li
 								a(href='/home') Trang chủ
-							li
-								a(href='#') Sản phẩm
+							li.categories
+								a(href='/products') Sản phẩm
+								ul.categories
 							li
 								a(href='#') Tin tức
 							li
 								a(href='#') Liên hệ
 						form.navbar-form.navbar-left
 							.form-group
-								input.form-control(type='text', placeholder='Search')
+								input.form-control#search(type='text',name = 'search', placeholder='Nhập từ khóa tìm kiếm')
+								ul.live-search
 							button.btn.btn-default(type='submit') Tìm kiếm
 						ul.nav.navbar-nav.navbar-right
+							if user
+								li.user-custom
+									a#username= user.name
+									ul.focus-user
+										li.info-user-item
+											i.far.fa-user-circle
+											a.info-user Xem thông tin
+										li.info-user-item
+											i.far.fa-info-circle
+											a.info-user Quản lí đơn hàng
+										li.info-user-item
+											i.fas.fa-sign-out-alt
+											if (redirectTo)
+												a.logout-user(href = "/user/logout?redirectTo=/" + redirectTo ) Đăng xuất
+											else
+												a.logout-user(href = "/user/logout" ) Đăng xuất
+							else
+								li
+									// a(data-toggle='modal', data-target='#exampleModal', data-whatever='@mdo') Đăng nhập
+									if (redirectTo)
+										a(href = "/user/login?redirectTo=/"+ redirectTo) Đăng nhập
+									else
+										a(href = "/user/login") Đăng nhập
 							li
-								a(href='#') Name
-							li
-								a.cart-product(href='')
+								if countCart
+									.countCart= countCart
+								a.cart-product(href='/cart')
 									i.fas.fa-shopping-cart
 		block content
+
+		footer.footer-about
+			.container
+				.row
+					.col-md-4
+						.info-item
+							.info-icon
+								.icon
+									i.fas.fa-phone
+							.info-content
+								.content
+									h5 Hotline
+									h5 0973.648.655
+					.col-md-4
+						.info-item
+							.info-icon
+								.icon
+									i.fas.fa-home
+							.info-content
+								.content
+									h5 Địa chỉ
+									h5 88 - Đinh Công Tráng - TP Vinh - NA
+					.col-md-4
+						.info-item
+							.info-icon
+								.icon
+									i.fas.fa-envelope
+							.info-content
+								.content
+									h5 Email
+									h5 hungphan5995@gmail.com
+					.col-md-4
+						.us-about
+							.us-title
+								p Về chúng tôi 
+								hr.title-ngang
+							.about-content
+								| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde quam obcaecati, dolorum inventore sunt est, atque iure aspernatur totam ea natus libero distinctio, fugit aperiam error tempore, ducimus incidunt laborum.
+					.col-md-4
+						.us-about
+							.us-title
+								p Hỗ trợ 
+								hr.title-ngang
+							.about-content
+								ul
+									li
+										a(href='')
+											i.fas.fa-angle-double-right
+											| Tư vấn
+									li
+										a(href='')
+											i.fas.fa-angle-double-right
+											| Khuyến mãi
+									li
+										a(href='')
+											i.fas.fa-angle-double-right
+											| Về chúng tôi
+									li
+										a(href='')
+											i.fas.fa-angle-double-right
+											| Thanh toán
+					.col-md-4
+						.us-about
+							iframe(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3779.908487981681!2d105.67654901442823!3d18.66810206951883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3139ce7b7cb7346d%3A0x259b035e16b8e9a!2zODggxJBpbmggQ8O0bmcgVHLDoW5nLCBMw6ogTWFvLCBUaMOgbmggcGjhu5EgVmluaCwgTmdo4buHIEFuIDQyOTk5LCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1538642076216', width='100%', height='100%', frameborder='0', style='border:0', allowfullscreen='')
+		.copy-right
+			.container
+				.copy-content
+					p
+						| 2015 Bản quyền thuộc về 
+						span Trái cây
+				.design-about.pull-right
+					p Thiết kế và phát triển bởi Go Go
+
+		#exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel')
+			.modal-dialog(role='document')
+				.modal-content
+					.modal-header
+						button.close(type='button', data-dismiss='modal', aria-label='Close')
+							span(aria-hidden='true') ×
+						h4#exampleModalLabel.modal-title Đăng nhập
+					.modal-body
+						.alert.alert-success.wsalert.wssignup-s(role='alert')
+						.alert.alert-warning.wsalert.wssignup-w(role='alert')
+						form#frm-login
+							.form-group
+								label.control-label(for='recipient-email') Email:
+								input#recipient-email.form-control(name = "email", type = "email")
+							.form-group
+								label.control-label(for='message-pwd') Password:
+								input#recipient-pwd.form-control(name = "password", type = "password")
+							button.btn.btn-default(type='button', data-dismiss='modal') Close
+							button#btn-login.btn.btn-primary(type='button') Đăng nhập
 		script(src='http://code.jquery.com/jquery-1.9.1.min.js', integrity='sha256-wS9gmOZBqsqWxgIVgA8Y9WcQOa7PgSIX+rPA0VL2rbQ=', crossorigin='anonymous')
+		script(src="https://unpkg.com/axios/dist/axios.min.js")
 		// Bootstrap JavaScript
 		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', integrity='sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS', crossorigin='anonymous')
 		// IE10 viewport hack for Surface/desktop Windows 8 bug
 		script(src='./js/1.js',  LANGUAGE = 'Javascript')
 		script(src='./js/productDetailt.js',  LANGUAGE = 'Javascript')
+		script(src='./js/login_ajax.js',  LANGUAGE = 'Javascript')
+		script(src='./js/cart.js',  LANGUAGE = 'Javascript')
+		script
+			| var maxPage = #{maxPage}
+		script(src='./js/filter.js',  LANGUAGE = 'Javascript')
 	

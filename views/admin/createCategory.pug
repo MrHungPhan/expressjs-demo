@@ -3,13 +3,13 @@ extends ../layouts/adminLayout
 block content
 	form(action='', method='POST', role='form', enctype="multipart/form-data")
 		.form-group
-			label(for='') Category Name
-			input.form-control(type='text',name='name' id='', placeholder='Input field')
+			label(for='') Tên Loại
+			input.form-control(type='text',name='name' id='', placeholder='Nhập tên loại sản phẩm')
 		.form-group
-			label(for='') Description
-			input.form-control(type='text', id='',name = 'description' placeholder='Input field')
+			label(for='') Mô Tả
+			input.form-control(type='text', id='',name = 'description' placeholder='Nhập nội dung mô tả')
 		.form-group
-			label(for='') Imgage
+			label(for='') Ảnh
 			input.form-control-file(type='file', name = 'avatar', id='', placeholder='Input field')
 		
-		button.btn.btn-primary(type='submit') Create
+		button.btn.btn-primary(type='submit') Thêm Mới

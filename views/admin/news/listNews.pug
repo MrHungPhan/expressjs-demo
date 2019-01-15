@@ -1,0 +1,68 @@
+extends ../../layouts/adminLayout
+
+block content
+	.panel.panel-default.panel-table
+		.panel-heading
+			.row
+				.col.col-xs-6
+					h3.panel-title Danh Sách Tin Tức
+				.col.col-xs-6.text-right
+					button.btn.btn-sm.btn-primary.btn-create(type='button') Thêm Mới
+		.panel-body
+			table.table.table-striped.table-bordered.table-list
+				thead
+					tr
+						th
+							em.fa.fa-cog
+						th STT
+						th Tiêu Đề
+						th Nội Dung
+						th Tóm Tắt
+						th Ảnh
+						th Tác Gỉa
+				tbody
+					- var i = 0;
+					each item, index in newsList
+						tr
+							td(align='center')
+								a.btn.btn-default.btn-edit(href = "/admin/news/edit_new/"+ item._id.toString())
+									em.fas.fa-pencil-alt
+								a.btn.btn-danger.btn-delete(href = "/admin/news/delete_new/"+ item._id.toString())
+									em.fa.fa-trash
+							td= index + 1 + (perPage * (page - 1))
+							td= item.title
+							td= item.content
+							td= item.title_content
+							td
+								each srcAvatar in item.avatar_around
+									img.avatar(src = srcAvatar, style = "margin-right : 5px;")
+							td= item.author
+		.panel-footer
+			.row
+				.col.col-xs-4
+					| Page #{page} of #{lastPage }
+				.col.col-xs-8
+					ul.pagination.hidden-xs.pull-right
+						- var pagePrev = page - 1;
+						- var pageNext = page + 1;
+						each item in pageNumber
+							if (item === 'First')
+								li
+									a(href='/admin/news/list_news?page=1')= item
+							else if (item === 'Next')
+								li
+									a(href='/admin/news/list_news?page='+ pageNext)= item
+							else if (item === 'Prev')
+								li
+									a(href='/admin/news/list_news?page=' + pagePrev)= item
+							else if (item === 'Last')
+								li
+									a(href='/admin/news/list_news?page=' + lastPage)= item
+							else if (item != 'First' && item != 'Next' && item != 'Prev' && item != 'Last')	
+								if (item == page)
+									li.active
+										a(href='/admin/news/list_news?page=' + item)= item
+								else
+									li
+										a(href='/admin/news/list_news?page=' + item)= item
+

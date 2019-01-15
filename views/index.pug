@@ -12,7 +12,7 @@ block content
 							.pr-left
 								a(href='')= item
 							.pr-right
-								a(href='')
+								a(href='/categories/'+item.toString())
 									| Xem thêm
 									i.fas.fa-angle-double-right
 				else
@@ -23,10 +23,47 @@ block content
 									.col-sm-6.col-md-3.product
 										.product-item
 											.product-img
-												img.img-responsive(src= i.avatar, alt='Image')
+												img.img-responsive(src= i.avatar[0], alt='Image')
 												.product-overlay
 													a.btn.btn-danger(href='/products/'+ i._id.toString() , type='button') Đặt mua
 											.product-content
-												p= i.name
-
-	
+												p.name= i.name
+												p.price #{i.priceFormat}/#{i.unit}
+		.brand(style='background-image: url(./img/brand.png);')
+			.brand-content
+				.container.brand-item
+					.row
+						.col-md-8.col-md-offset-2
+							.brand-img
+								img.img-responsive(src='./img/cmt.png', alt='Image')
+							p
+								| Chúng tôi cảm nhận đưọc sự tươi ngon trong từng sản phẩm của công ty các bạn. Cảm ơn các bạn đã đưa lên thị trường những sản phẩm tươi sạch giúp kinh tế xã hội phát triển hơn
+		.news-product
+			.container
+				.pr-title
+					.pr-left
+						a(href='') Tin tức
+					.pr-right
+						a(href='')
+							| Xem thêm
+							i.fas.fa-angle-double-right
+				.row
+					.col-sm-12.col-md-6
+						.slider-news
+							#carousel-id.carousel.slide(data-ride='carousel')
+								.carousel-inner
+									if news
+										each newitem in news
+											.item
+												img(alt='First slide', src= newitem.avatar_around[0])
+												.item-caption= newitem.title
+					.col-md-6
+						each item in newsLast
+							.news-item
+								.news-img
+									img(src= item.avatar_around[0])
+								.news-content
+									h5= item.title
+									p= item.title_content
+									a(href='') Xem thêm
+							

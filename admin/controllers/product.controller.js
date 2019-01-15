@@ -6,13 +6,19 @@ module.exports.getCreateProduct = async function(req, res, next){
 
 	var categories = await Category.find();
 	res.render('admin/createProduct',{
-		categories: categories
+		categories: categories,
+		user : res.locals.account
 	});
 };
 
 module.exports.postCreateProduct = function(req, res, next){
 	
-	req.body.avatar = req.file.path.split('/').slice(1).join('/');
+	console.log(req.body);
+	var avatar = [];
+	for(var i = 0; i < req.files.length; i++){
+		avatar.push(req.files[i].path.split('/').slice(1).join('/'));
+	}
+	req.body.avatar = avatar;
 
 	Product.create(req.body);
 	res.redirect('/admin/products/list_products');
@@ -32,19 +38,29 @@ module.exports.getListProducts = async function(req, res, next){
 
 		var pageNumber = [];
 
-		if(page == 1)
-			pageNumber.push(page, page + 1, page + 2, 'Next', 'Last');
-		else if(page > 1 && page < totalPage)
-			pageNumber.push('First', 'Prev', page-1, page, page + 1, 'Next','Last');
-		else if(page == totalPage)
-			pageNumber.push('First', 'Prev',page -2, page -1, page);
+		if(totalPage === 1){
+			pageNumber.push(1);
+		}else if (totalPage === 2) {
+			pageNumber.push(1,2);
+		}else if (totalPage === 3) {
+			pageNumber.push(1,2,3);
+		}
+		else{
+			if(page == 1)
+				pageNumber.push(page, page + 1, page + 2, 'Next', 'Last');
+			else if(page > 2 && page < totalPage)
+				pageNumber.push('First', 'Prev', page-1, page, page + 1, 'Next','Last');
+			else if(page == totalPage)
+				pageNumber.push('First', 'Prev',page -2, page -1, page);
+		}
 
 		res.render('admin/listProducts',{
 			productsList : productsListPage,
 			pageNumber : pageNumber,
 			lastPage : totalPage,
 			page : page,
-			perPage: perPage
+			perPage: perPage,
+			user : res.locals.account
 		});
 	}
 	catch(error){
@@ -76,7 +92,8 @@ module.exports.getEditProduct = async function(req, res, next){
 
 	res.render('admin/editProduct',{
 		productEdit: productEdit,
-		categoriesEdit : categoriesEdit
+		categoriesEdit : categoriesEdit,
+		user : res.locals.account
 	})
 
 };

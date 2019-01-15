@@ -11,7 +11,7 @@ var router = express.Router();
 
 router.get('/create_product', controller.getCreateProduct);
 
-router.post('/create_product',upload.single('avatar') ,controller.postCreateProduct);
+router.post('/create_product',upload.array('avatar', 4) ,controller.postCreateProduct);
 
 router.get('/list_products', controller.getListProducts);
 

@@ -1,0 +1,76 @@
+extends ../layouts/common
+
+block content
+	.container
+		.cart-title
+			if (productDetailtList)
+				h3 Giỏ hàng của bạn ( #{count} sản phẩm )
+			else
+				h3 Giỏ hàng của bạn ( 0 sản phẩm )
+		.cart-content
+			.cart-bill
+				if (productDetailtList.length !== 0)
+					each item in productDetailtList
+						.cart-detailt(data-id= item._id.toString(), data-billid= orderId)
+							.cart-left
+								.c-img-product
+									img(src= item.avatar[0] , alt='')
+								.c-name-product= item.name
+							.cart-right
+								.c-price-product= item.priceFormat
+								.c-quantity-product
+									input#quantity(type='number',step="any", value= (parseFloat(item.quantity)).toFixed(1), data-toggle='modal', data-target='#exampleModalUpdate', data-whatever='@mdo', data-id= item._id.toString(), data-billid= orderId readonly)
+									span.unit= item.unit
+								a.c-delete-product
+									i.far.fa-trash-alt
+				else
+					p.cart-empty Giỏ hàng trống. 
+						a(href = "/home") Tiếp tục mua sắm !
+			.cart-done
+				h3 Đặt hàng
+				.cart-blance
+					h3.balance
+						| Tổng tiền
+						span= total
+					if (productDetailtList.length !== 0)
+						a.btn.btn-danger(href='/cart/checkout?order='+orderId) Thanh toán
+					else
+						a.btn.btn-danger(href='/cart/checkout?order='+orderId, disabled = "disabled") Thanh toán
+	#exampleModalUpdate.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel')
+		.modal-dialog(role='document')
+			.modal-content
+				.modal-header
+					button.close(type='button', data-dismiss='modal', aria-label='Close')
+						span(aria-hidden='true') ×
+					h4#exampleModalLabel.modal-title Sản phẩm
+				.modal-body
+					.alert.alert-success.wsalert.wssignup-s(role='alert')
+					.alert.alert-warning.wsalert.wssignup-w(role='alert')
+					form#frm-updatePro
+						.frm-pr
+							img.frm-ava
+							.frm-name
+						.form-group
+							label.control-label(for='quantityUpdate') Số lưọng :
+							.group-quantity
+								// button.btn.btn-default.btn-prevUpdate(type="button") -
+								input#quantityUpdate.form-control(name = "quantity", type = "number", min = 0.5, max = 10)
+								// button.btn.btn-default.btn-nextUpdate(type="button") +
+								span.unnitUpdate
+						button#btn-update.btn.btn-primary(type='button') Xác nhận
+	#exampleModalDelete.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel')
+		.modal-dialog(role='document')
+			.modal-content
+				.modal-header
+					button.close(type='button', data-dismiss='modal', aria-label='Close')
+						span(aria-hidden='true') ×
+					h5#exampleModalLabel.modal-title Xác nhận
+				.modal-body
+					.alert.alert-success.wsalert.wssignup-s(role='alert')
+					.alert.alert-warning.wsalert.wssignup-w(role='alert')
+					form#frm-deletePro
+						p Bạn có muốn loại bỏ sản phẩm này khỏi giỏ hàng ?	
+						.btn-grou
+							a.cancel(data-dismiss="modal") Hủy
+							a#btn-delete Xóa
+

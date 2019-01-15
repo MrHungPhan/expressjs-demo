@@ -1,0 +1,30 @@
+extends ../layouts/common
+
+block content
+    .wrap-content
+      .login-form
+        .login-title
+          h3
+            | Chào mừng đến với Vựa Hoa Quả, Đăng nhập ngay !
+        .login-content
+          != messages('message', locals)
+          if error
+            each err in error
+              .alert.alert-warning= err
+          form#frm-login(method = 'POST' action = "/user/postLogin?redirectTo=" + redirectTo)
+              .form-group
+                label(for='email') Email
+                input#email.form-control(name = "email", value = body?body.email:'', ,type='email')
+              .form-group
+                label(for='pwd') Password
+                input#pwd.form-control(name = "password",value = body?body.password:'', type='password')
+              .form-group.form-check
+                label.form-check-label
+                  input.form-check-input(type='checkbox')
+                  |  Remember me
+              .forgot-singup 
+                .forgot
+                  a(href= "") Forgot password
+                .singup
+                  a(href = "/user/signup_user") Sign up
+                  button.btn.btn-primary.login-btn(type='submit') Login			

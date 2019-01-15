@@ -1,0 +1,16 @@
+doctype html
+html(lang='en')
+	head
+		title Admin Login
+		link(rel="stylesheet", href="/styles/admin/adminLogin.css")
+	body
+		form#frm-adlogin(action='/admin/login', method = 'POST')
+			.form-group
+				!= messages('message', loginAdmin)
+			.form-group
+				label(for='username') Tài khoản
+				input#username.form-control(name='username', type='text' ,value = body?body.username:'')
+			.form-group
+				label(for='password') Mật khẩu
+				input#password.form-control(name='password', type='password',value = body?body.password:'')
+			button.btn.btn-danger(type ="submit") Đăng Nhập
